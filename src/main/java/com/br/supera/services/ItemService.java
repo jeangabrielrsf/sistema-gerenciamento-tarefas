@@ -42,4 +42,9 @@ public class ItemService {
         item.setName(newItemName);
         itemRepository.save(item);
     }
+
+    public void deleteItem(Long listId, Long itemId) {
+        listRepository.findById(listId).orElseThrow(ListNotFoundException::new);
+        itemRepository.delete(itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new));
+    }
 }

@@ -34,4 +34,10 @@ public class ItemController {
         itemService.changeItemName(listId, itemId, itemDTO.getName());
         return ResponseEntity.status(HttpStatus.OK).body(itemDTO);
     }
+
+    @DeleteMapping("/{listId}/{itemId}")
+    public ResponseEntity<?> deleteItemById(@PathVariable Long listId, @PathVariable Long itemId) {
+        itemService.deleteItem(listId, itemId);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
 }
