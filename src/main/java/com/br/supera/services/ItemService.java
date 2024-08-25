@@ -54,4 +54,11 @@ public class ItemService {
         item.setStatus(true);
         itemRepository.save(item);
     }
+
+    public void updateItemAsPriority(Long listId, Long itemId) {
+        listRepository.findById(listId).orElseThrow(ListNotFoundException::new);
+        ItemModel item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+        item.setPriority(true);
+        itemRepository.save(item);
+    }
 }

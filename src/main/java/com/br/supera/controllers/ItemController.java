@@ -46,4 +46,10 @@ public class ItemController {
         itemService.updateItemAsDone(listId, itemId);
         return ResponseEntity.status(HttpStatus.OK).body("Item marcado como feito!");
     }
+
+    @PutMapping("/{listId}/{itemId}")
+    public ResponseEntity<?> markItemAsPriority(@PathVariable Long listId, @PathVariable Long itemId) {
+        itemService.updateItemAsPriority(listId, itemId);
+        return ResponseEntity.status(HttpStatus.OK).body("Item marcado como prioridade!");
+    }
 }
