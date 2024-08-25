@@ -1,6 +1,7 @@
 package com.br.supera.services;
 
 import com.br.supera.dtos.ItemDTO;
+import com.br.supera.exceptions.ItemNotFoundException;
 import com.br.supera.exceptions.ListNotFoundException;
 import com.br.supera.models.ItemModel;
 import com.br.supera.models.ListModel;
@@ -32,5 +33,13 @@ public class ItemService {
         newItem.setList(list);
         itemRepository.save(newItem);
 
+    }
+
+    public void changeItemName(Long listId, Long itemId, String newItemName) {
+        listRepository.findById(listId).orElseThrow(ListNotFoundException::new);
+        ItemModel item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+
+        item.setName(newItemName);
+        itemRepository.save(item);
     }
 }

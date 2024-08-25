@@ -28,4 +28,10 @@ public class ItemController {
         itemService.insertItemIntoList(listId, itemDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(itemDTO);
     }
+
+    @PutMapping("/{listId}/{itemId}")
+    public ResponseEntity<?> changeItemName(@PathVariable Long listId, @PathVariable Long itemId, @RequestBody ItemDTO itemDTO) {
+        itemService.changeItemName(listId, itemId, itemDTO.getName());
+        return ResponseEntity.status(HttpStatus.OK).body(itemDTO);
+    }
 }

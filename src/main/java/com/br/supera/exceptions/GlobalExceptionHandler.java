@@ -11,4 +11,9 @@ public class GlobalExceptionHandler extends RuntimeException {
     public ResponseEntity<Object> handleListNotFoundException(ListNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+    @ExceptionHandler({ItemNotFoundException.class})
+    public ResponseEntity<Object> handleItemNotFoundException(ItemNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
 }
