@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -17,4 +19,8 @@ public class ListModel {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToMany
+    @JoinColumn(name = "item_id")
+    private List<ItemModel> items;
 }
