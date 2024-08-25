@@ -16,4 +16,10 @@ public class ListService {
         List<ListModel> lists = listRepository.findAll();
         return lists;
     }
+
+    public void createList(String name) {
+        ListModel list = new ListModel();
+        list.setName(name);
+        listRepository.save(list);
+    }
 }
