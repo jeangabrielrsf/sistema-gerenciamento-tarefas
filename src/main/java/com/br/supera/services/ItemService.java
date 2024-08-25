@@ -47,4 +47,11 @@ public class ItemService {
         listRepository.findById(listId).orElseThrow(ListNotFoundException::new);
         itemRepository.delete(itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new));
     }
+
+    public void updateItemAsDone(Long listId, Long itemId) {
+        listRepository.findById(listId).orElseThrow(ListNotFoundException::new);
+        ItemModel item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+        item.setStatus(true);
+        itemRepository.save(item);
+    }
 }

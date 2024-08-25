@@ -38,6 +38,12 @@ public class ItemController {
     @DeleteMapping("/{listId}/{itemId}")
     public ResponseEntity<?> deleteItemById(@PathVariable Long listId, @PathVariable Long itemId) {
         itemService.deleteItem(listId, itemId);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return ResponseEntity.status(HttpStatus.OK).body("Item deletado com sucesso!");
+    }
+
+    @PutMapping("/{listId}/{itemId}")
+    public ResponseEntity<?> markItemAsDone(@PathVariable Long listId, @PathVariable Long itemId) {
+        itemService.updateItemAsDone(listId, itemId);
+        return ResponseEntity.status(HttpStatus.OK).body("Item marcado como feito!");
     }
 }
