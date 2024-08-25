@@ -24,6 +24,6 @@ public class ItemModel {
     private boolean priority;
 
     @ManyToOne
-    @JoinColumn(name = "list_id")
+    @JoinColumn(name = "listId")
     private ListModel list;
 }

@@ -20,7 +20,4 @@ public class ListModel {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "item_id")
-    private List<ItemModel> items;
 }
