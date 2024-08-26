@@ -5,6 +5,7 @@ import com.br.supera.dtos.ListDTO;
 import com.br.supera.models.ListModel;
 import com.br.supera.services.ListService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,14 @@ public class ListController {
     private final ListService listService;
 
     @GetMapping
-    public ResponseEntity<?> getLists(){
-        List<ListModel> lists = listService.getAllLists();
-        return ResponseEntity.ok(lists);
+    public ResponseEntity<?> getLists(@RequestParam(required = false) String name){
+        if (name != null && !name.isEmpty()){
+            return ResponseEntity.status(HttpStatus.OK).body(listService.getAllListsFiltered(name));
+        } else {
+            List<ListModel> lists = listService.getAllLists();
+            return ResponseEntity.status(HttpStatus.OK).body(lists);
+        }
+
     }
 
     @PostMapping

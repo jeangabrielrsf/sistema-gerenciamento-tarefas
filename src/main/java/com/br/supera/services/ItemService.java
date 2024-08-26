@@ -22,7 +22,7 @@ public class ItemService {
         if (listRepository.findById(listId).isEmpty()) {
             throw new ListNotFoundException();
         }
-        return itemRepository.findAllByListId(listId);
+        return itemRepository.findAllByListIdOrderByPriority(listId);
     }
 
     public void insertItemIntoList(Long listId, ItemDTO itemDTO) {

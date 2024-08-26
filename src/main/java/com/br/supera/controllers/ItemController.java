@@ -41,13 +41,13 @@ public class ItemController {
         return ResponseEntity.status(HttpStatus.OK).body("Item deletado com sucesso!");
     }
 
-    @PutMapping("/{listId}/{itemId}")
+    @PutMapping("/{listId}/{itemId}/setDone")
     public ResponseEntity<?> markItemAsDone(@PathVariable Long listId, @PathVariable Long itemId) {
         itemService.updateItemAsDone(listId, itemId);
         return ResponseEntity.status(HttpStatus.OK).body("Item marcado como feito!");
     }
 
-    @PutMapping("/{listId}/{itemId}")
+    @PutMapping("/{listId}/{itemId}/setPriority")
     public ResponseEntity<?> markItemAsPriority(@PathVariable Long listId, @PathVariable Long itemId) {
         itemService.updateItemAsPriority(listId, itemId);
         return ResponseEntity.status(HttpStatus.OK).body("Item marcado como prioridade!");

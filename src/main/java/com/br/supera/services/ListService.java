@@ -17,6 +17,10 @@ public class ListService {
         return lists;
     }
 
+    public List<ListModel> getAllListsFiltered(String name) {
+        return listRepository.findAllByNameContaining(name);
+    }
+
     public void createList(String name) {
         ListModel list = new ListModel();
         list.setName(name);
